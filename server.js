@@ -160,7 +160,7 @@ app.get('/guests/:id', function(req, res) {
 //POST /users
 app.post('/guests', function(req, res) {
 	//Faz com que o objeto só tenha os campos que desejamos
-	var body = _.pick(req.body, 'name', 'lastName', 'email', 'document');
+	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber');
 
 	db.guest.create(body).then(function(guest) {
 		res.json(guest.toJSON());
@@ -190,7 +190,7 @@ app.delete('/guests/:id', function(req, res) {
 	});
 });
 
-// PUT /users/:id
+// PUT /guests/:id
 app.put('/guests/:id', function(req, res) {
 	var guestId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, 'name', 'lastName', 'email', 'document');
