@@ -1,2 +1,2 @@
 node_modules/
-data/smartech-api.sqlite
+data/*.sqlite
