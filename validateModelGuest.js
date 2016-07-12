@@ -17,23 +17,23 @@ module.exports = function(body) {
 		attributes.guestDocumentNumber = body.guestDocumentNumber;
 	}
 
-	if (body.hasOwnProperty('arrivalDate')) {
+	if (body.hasOwnProperty('arrivalDate') || body.arrivalDate !== '') {
 		attributes.arrivalDate = body.arrivalDate;
 	}
 
-	if (body.hasOwnProperty('dateArrivalForecast')) {
+	if (body.hasOwnProperty('dateArrivalForecast') || body.dateArrivalForecast !== '') {
 		attributes.dateArrivalForecast = body.dateArrivalForecast;
 	}
 
-	if (body.hasOwnProperty('dateOfBirth')) {
+	if (body.hasOwnProperty('dateOfBirth') || body.dateOfBirth !== '') {
 		attributes.dateOfBirth = body.dateOfBirth;
 	}
 
-	if (body.hasOwnProperty('dateScheduledDeparture')) {
+	if (body.hasOwnProperty('dateScheduledDeparture') || body.dateScheduledDeparture !== '') {
 		attributes.dateScheduledDeparture = body.dateScheduledDeparture;
 	}
 
-	if (body.hasOwnProperty('departureDate')) {
+	if (body.hasOwnProperty('departureDate') || body.departureDate !== '') {
 		attributes.departureDate = body.departureDate;
 	}
 
