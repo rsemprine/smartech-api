@@ -165,7 +165,6 @@ app.post('/guests', function(req, res) {
 	for (var key in req.body) {
 		item = req.body[key]
 
-		console.log(item);
 		var body = _.pick(item, 'name', 'lastName', 'email', 'guestDocumentNumber',
 			'arrivalDate', 'dateArrivalForecast', 'dateOfBirth', 'dateScheduledDeparture',
 			'departureDate', 'mainGuest', 'nationality', 'profession', 'reservationNumber',
