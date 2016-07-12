@@ -193,7 +193,7 @@ app.delete('/guests/:id', function(req, res) {
 // PUT /guests/:id
 app.put('/guests/:id', function(req, res) {
 	var guestId = parseInt(req.params.id, 10);
-	var body = _.pick(req.body, 'name', 'lastName', 'email', 'document');
+	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber');
 	var attributes = {};
 
 	if (body.hasOwnProperty('name')) {
@@ -208,7 +208,7 @@ app.put('/guests/:id', function(req, res) {
 		attributes.email = body.email;
 	}
 
-	if (body.hasOwnProperty('document')) {
+	if (body.hasOwnProperty('guestDocumentNumber')) {
 		attributes.document = body.document;
 	}
 
