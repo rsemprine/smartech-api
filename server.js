@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var _ = require('underscore');
 var db = require('./db.js');
+var validateGuest = require('./validateModelGuest.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -157,19 +158,31 @@ app.get('/guests/:id', function(req, res) {
 	});
 });
 
-//POST /users
+//POST /guests
 app.post('/guests', function(req, res) {
+	var item;
 	//Faz com que o objeto só tenha os campos que desejamos
-	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber');
+	for (var key in req.body) {
+		item = req.body[key]
 
-	db.guest.create(body).then(function(guest) {
-		res.json(guest.toJSON());
-	}, function(e) {
-		res.status(400).json(e);
-	});
+		console.log(item);
+		var body = _.pick(item, 'name', 'lastName', 'email', 'guestDocumentNumber',
+			'arrivalDate', 'dateArrivalForecast', 'dateOfBirth', 'dateScheduledDeparture',
+			'departureDate', 'mainGuest', 'nationality', 'profession', 'reservationNumber',
+			'sex', 'idReservations', 'codUH', 'reservationDate', 'branchID', 'companyID');
+		var attributes = {};
+		console.log(body);
+		attributes = validateGuest(body);
+		console.log(attributes);
+		db.guest.create(attributes).then(function(guest) {
+			res.json(guest.toJSON());
+		}, function(e) {
+			res.status(400).json(e);
+		});
+	}
 });
 
-//DELETE /users/:id
+//DELETE /guests/:id
 app.delete('/guests/:id', function(req, res) {
 	var guestId = parseInt(req.params.id, 10);
 
@@ -193,44 +206,39 @@ app.delete('/guests/:id', function(req, res) {
 // PUT /guests/:id
 app.put('/guests/:id', function(req, res) {
 	var guestId = parseInt(req.params.id, 10);
-	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber');
+	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber',
+		'arrivalDate', 'dateArrivalForecast', 'dateOfBirth', 'dateScheduledDeparture',
+		'departureDate', 'mainGuest', 'nationality', 'profession', 'reservationNumber',
+		'sex', 'idReservations', 'codUH', 'reservationDate', 'branchID', 'companyID');
 	var attributes = {};
 
-	if (body.hasOwnProperty('name')) {
-		attributes.name = body.name;
-	}
+	attributes = validateGuest(body);
 
-    if (body.hasOwnProperty('lastName')) {
-		attributes.lastName = body.lastName;
-	}
-
-	if (body.hasOwnProperty('email')) {
-		attributes.email = body.email;
-	}
-
-	if (body.hasOwnProperty('guestDocumentNumber')) {
-		attributes.document = body.document;
-	}
-
-	db.guest.findById(guestId).then(function(guest) {
+	db.guest.findOne({
+		where: {
+			id: guestId
+		}
+	}).then(function(guest) {
 		if (guest) {
 			guest.update(attributes).then(function(guest) {
 				res.json(guest.toJSON());
 			}, function(e) {
-				res.send(400).json(e);
+				res.sendStatus(400).json(e);
 			});
 		} else {
 			res.status(404).send();
 		}
-	}, function(e) {
-		res.status(500).json(e);
+	}, function() {
+		res.status(500).send();
 	});
 });
-//END-----------------------USER--------------------------------
+//END-----------------------GUEST--------------------------------
+
+
 
 db.sequelize.sync(
 	//{force: true}
-	).then(function() {
+).then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT);
 	});
