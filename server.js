@@ -253,7 +253,8 @@ app.post('/people', function(req, res) {
 		counter = counter + 1;
 
 		db.person.create(attributes).then(function(person) {
-			this.resultado = true;	
+			this.resultado = true;
+			console.log(person);
 		}, function(e) {
 			this.resultado = false;
 			msgError = e;
@@ -266,6 +267,27 @@ app.post('/people', function(req, res) {
 	} else {
 		res.status(400).json(msgError);
 	}
+});
+
+//GET /people
+//GET /people?email=email
+app.get('/people', function(req, res) {
+	var query = req.query;
+	var where = {};
+
+	if (query.hasOwnProperty('email') && query.email.length > 0) {
+		where.email = {
+			$like: '%' + query.email + '%'
+		};
+	}
+
+	db.person.findAll({
+		where: where
+	}).then(function(people) {
+		res.json(people);
+	}, function(e) {
+		res.status(500).json(e);
+	});
 });
 //END---------------------PERSON---------------------------------
 
