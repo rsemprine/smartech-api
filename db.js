@@ -18,6 +18,7 @@ var db = {};
 
 db.guest = sequelize.import(__dirname + '/models/guest.js');
 db.user = sequelize.import(__dirname + '/models/user.js');
+db.person = sequelize.import(__dirname + '/models/person.js');
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

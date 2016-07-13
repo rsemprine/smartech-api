@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var _ = require('underscore');
 var db = require('./db.js');
 var validateGuest = require('./validateModelGuest.js');
+var validatePerson = require('./validateModelPerson.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -233,6 +234,40 @@ app.put('/guests/:id', function(req, res) {
 });
 //END-----------------------GUEST--------------------------------
 
+//------------------------PERSON---------------------------------
+app.post('/people', function(req, res) {
+	var item;
+	var resultado = true;
+	var msgError;
+	var counter = 0;
+
+	//Faz com que o objeto só tenha os campos que desejamos
+	for (var key in req.body) {
+		item = req.body[key];
+
+		var body = _.pick(item, 'name', 'email', 'sex', 'country', 'neighborhood', 'state', 'city');
+		var attributes = {};
+		
+		attributes = validatePerson(body);
+		
+		counter = counter + 1;
+
+		db.person.create(attributes).then(function(person) {
+			this.resultado = true;	
+		}, function(e) {
+			this.resultado = false;
+			msgError = e;
+		});
+		
+	};
+
+	if (resultado) {
+		res.json("Sucess: " + counter + " people included!");
+	} else {
+		res.status(400).json(msgError);
+	}
+});
+//END---------------------PERSON---------------------------------
 
 
 db.sequelize.sync(
