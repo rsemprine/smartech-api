@@ -62,6 +62,9 @@ module.exports = function(sequelize, DataTypes){
 		},
 		companyID: {
 			type: DataTypes.INTEGER
+		},
+		token: {
+			type: DataTypes.STRING
 		}
 
 	},

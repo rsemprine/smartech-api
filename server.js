@@ -119,7 +119,8 @@ app.put('/users/:id', function(req, res) {
 //--------------------------GUEST--------------------------------
 //GET /guests
 //GET /guests?email=email
-//GET /guests?doc=doc
+//GET /guests?guestDocumentNumber=guestDocumentNumber
+//GET /guests?token=token
 app.get('/guests', function(req, res) {
 	var query = req.query;
 	var where = {};
@@ -130,9 +131,15 @@ app.get('/guests', function(req, res) {
 		};
 	}
 
-	if (query.hasOwnProperty('doc') && query.doc.length > 0) {
-		where.document = {
-			$like: '%' + query.doc + '%'
+	if (query.hasOwnProperty('guestDocumentNumber') && query.guestDocumentNumber.length > 0) {
+		where.guestDocumentNumber = {
+			$like: '%' + query.guestDocumentNumber + '%'
+		};
+	}
+
+	if (query.hasOwnProperty('token') && query.token.length > 0) {
+		where.token = {
+			$like: '%' + query.token + '%'
 		};
 	}
 
