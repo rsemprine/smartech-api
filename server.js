@@ -213,9 +213,9 @@ app.delete('/guests/:id', function(req, res) {
 // PUT /guests/:id
 app.put('/guests/:id', function(req, res) {
 	var guestId = parseInt(req.params.id, 10);
-	var body = _.pick(req.body, 'name', 'lastName', 'email', 'guestDocumentNumber',
+	var body = _.pick(req.body, 'Name', 'LastName', 'Email', 'GuestDocumentNumber',
 		'arrivalDate', 'dateArrivalForecast', 'dateOfBirth', 'dateScheduledDeparture',
-		'departureDate', 'mainGuest', 'nationality', 'profession', 'reservationNumber',
+		'departureDate', 'mainGuest', 'nationality', 'Profession', 'reservationNumber',
 		'sex', 'idReservations', 'codUH', 'reservationDate', 'branchID', 'companyID');
 	var attributes = {};
 
