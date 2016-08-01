@@ -173,10 +173,10 @@ app.post('/guests', function(req, res) {
 	for (var key in req.body) {
 		item = req.body[key]
 
-		var body = _.pick(item, 'name', 'lastName', 'email', 'guestDocumentNumber',
-			'arrivalDate', 'dateArrivalForecast', 'dateOfBirth', 'dateScheduledDeparture',
-			'departureDate', 'mainGuest', 'nationality', 'profession', 'reservationNumber',
-			'sex', 'idReservations', 'codUH', 'reservationDate', 'branchID', 'companyID');
+		var body = _.pick(item, 'Name', 'LastName', 'Email', 'GuestDocumentNumber',
+			'ArrivalDate', 'DateArrivalForecast', 'DateOfBirth', 'DateScheduledDeparture',
+			'DepartureDate', 'MainGuest', 'Nationality', 'Profession', 'ReservationNumber',
+			'Sex', 'IdReservations', 'CodUH', 'ReservationDate', 'BranchID', 'CompanyID');
 		var attributes = {};
 		console.log(body);
 		attributes = validateGuest(body);

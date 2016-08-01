@@ -1,32 +1,32 @@
 module.exports = function(body) {
 	var attributes = {};
 
-	if (body.hasOwnProperty('name')) {
-		attributes.name = body.name;
+	if (body.hasOwnProperty('Name')) {
+		attributes.name = body.Name;
 	}
 
-	if (body.hasOwnProperty('lastName')) {
-		attributes.lastName = body.lastName;
+	if (body.hasOwnProperty('LastName')) {
+		attributes.lastName = body.LastName;
 	}
 
-	if (body.hasOwnProperty('email')) {
-		attributes.email = body.email;
+	if (body.hasOwnProperty('Email')) {
+		attributes.email = body.Email;
 	}
 
-	if (body.hasOwnProperty('guestDocumentNumber')) {
-		attributes.guestDocumentNumber = body.guestDocumentNumber;
+	if (body.hasOwnProperty('GuestDocumentNumber')) {
+		attributes.guestDocumentNumber = body.GuestDocumentNumber;
 	}
 
-	if (body.hasOwnProperty('arrivalDate') && body.arrivalDate.trim() !== '') {
-		attributes.arrivalDate = body.arrivalDate;
+	if (body.hasOwnProperty('ArrivalDate') && body.ArrivalDate.trim() !== '') {
+		attributes.arrivalDate = body.ArrivalDate;
 	}
 
-	if (body.hasOwnProperty('dateArrivalForecast') && body.dateArrivalForecast.trim() !== '') {
-		attributes.dateArrivalForecast = body.dateArrivalForecast;
+	if (body.hasOwnProperty('DateArrivalForecast') && body.DateArrivalForecast.trim() !== '') {
+		attributes.dateArrivalForecast = body.DateArrivalForecast;
 	}
 
-	if (body.hasOwnProperty('dateOfBirth') && body.dateOfBirth.trim() !== '') {
-		attributes.dateOfBirth = body.dateOfBirth;
+	if (body.hasOwnProperty('DateOfBirth') && body.DateOfBirth.trim() !== '') {
+		attributes.dateOfBirth = body.DateOfBirth;
 	}
 
 	if (body.hasOwnProperty('dateScheduledDeparture') && body.dateScheduledDeparture.trim() !== '') {
