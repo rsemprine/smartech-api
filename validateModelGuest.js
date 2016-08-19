@@ -29,11 +29,11 @@ module.exports = function(body) {
 		attributes.dateOfBirth = body.DateOfBirth;
 	}
 
-	if (body.hasOwnProperty('dateScheduledDeparture') && body.dateScheduledDeparture.trim() !== '') {
+	if (body.hasOwnProperty('DateScheduledDeparture') && body.dateScheduledDeparture.trim() !== '') {
 		attributes.dateScheduledDeparture = body.dateScheduledDeparture;
 	}
 
-	if (body.hasOwnProperty('departureDate') && body.departureDate.trim() !== '') {
+	if (body.hasOwnProperty('DepartureDate') && body.departureDate.trim() !== '') {
 		attributes.departureDate = body.departureDate;
 	}
 
@@ -41,11 +41,11 @@ module.exports = function(body) {
 		attributes.mainGuest = body.mainGuest;
 	}
 
-	if (body.hasOwnProperty('nationality')) {
+	if (body.hasOwnProperty('Nationality')) {
 		attributes.nationality = body.nationality;
 	}
 
-	if (body.hasOwnProperty('profession')) {
+	if (body.hasOwnProperty('Profession')) {
 		attributes.profession = body.profession;
 	}
 
@@ -53,7 +53,7 @@ module.exports = function(body) {
 		attributes.reservationNumber = body.reservationNumber;
 	}
 
-	if (body.hasOwnProperty('sex')) {
+	if (body.hasOwnProperty('Sex')) {
 		attributes.sex = body.sex;
 	}
 
@@ -65,15 +65,15 @@ module.exports = function(body) {
 		attributes.codUH = body.codUH;
 	}
 
-	if (body.hasOwnProperty('reservationDate')) {
+	if (body.hasOwnProperty('ReservationDate')) {
 		attributes.reservationDate = body.reservationDate;
 	}
 
-	if (body.hasOwnProperty('branchID')) {
+	if (body.hasOwnProperty('BranchID')) {
 		attributes.branchID = body.branchID;
 	}
 
-	if (body.hasOwnProperty('companyID')) {
+	if (body.hasOwnProperty('CompanyID')) {
 		attributes.companyID = body.companyID;
 	}
 
