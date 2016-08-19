@@ -30,11 +30,11 @@ module.exports = function(body) {
 	}
 
 	if (body.hasOwnProperty('DateScheduledDeparture') && body.dateScheduledDeparture.trim() !== '') {
-		attributes.dateScheduledDeparture = body.dateScheduledDeparture;
+		attributes.dateScheduledDeparture = body.DateScheduledDeparture;
 	}
 
 	if (body.hasOwnProperty('DepartureDate') && body.departureDate.trim() !== '') {
-		attributes.departureDate = body.departureDate;
+		attributes.departureDate = body.DepartureDate;
 	}
 
 	if (body.hasOwnProperty('mainGuest')) {
@@ -42,11 +42,11 @@ module.exports = function(body) {
 	}
 
 	if (body.hasOwnProperty('Nationality')) {
-		attributes.nationality = body.nationality;
+		attributes.nationality = body.Nationality;
 	}
 
 	if (body.hasOwnProperty('Profession')) {
-		attributes.profession = body.profession;
+		attributes.profession = body.Profession;
 	}
 
 	if (body.hasOwnProperty('reservationNumber')) {
@@ -54,7 +54,7 @@ module.exports = function(body) {
 	}
 
 	if (body.hasOwnProperty('Sex')) {
-		attributes.sex = body.sex;
+		attributes.sex = body.Sex;
 	}
 
 	if (body.hasOwnProperty('idReservations')) {
@@ -66,15 +66,15 @@ module.exports = function(body) {
 	}
 
 	if (body.hasOwnProperty('ReservationDate')) {
-		attributes.reservationDate = body.reservationDate;
+		attributes.reservationDate = body.ReservationDate;
 	}
 
 	if (body.hasOwnProperty('BranchID')) {
-		attributes.branchID = body.branchID;
+		attributes.branchID = body.BranchID;
 	}
 
 	if (body.hasOwnProperty('CompanyID')) {
-		attributes.companyID = body.companyID;
+		attributes.companyID = body.CompanyID;
 	}
 
 	return attributes;
